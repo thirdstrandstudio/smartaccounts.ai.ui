@@ -1,10 +1,10 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
+    /* Light mode colors (default) */
     --background: 210 40% 98%;
     --foreground: 222 47% 11%;
 
@@ -37,33 +37,34 @@
   }
 
   .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
+    /* Full black with green accents for dark mode */
+    --background: 0 0% 0%;
+    --foreground: 0 0% 95%;
 
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 210 79% 46%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 142 72% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 195 82% 54%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 142 60% 35%;
+    --secondary-foreground: 0 0% 95%;
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 262 61% 67%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 142 72% 50%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 142 72% 50%;
   }
 
   * {
@@ -166,7 +167,11 @@
 
 /* Adding dark mode overrides for smart colors */
 .dark {
-  --smart-gray: 220 14% 16%;
+  --smart-gray: 0 0% 10%;
+  --smart-blue: 142 72% 50%;
+  --smart-teal: 142 72% 40%;
+  --smart-mint: 142 72% 50%;
+  --smart-purple: 142 72% 30%;
 }
 
 @layer utilities {
