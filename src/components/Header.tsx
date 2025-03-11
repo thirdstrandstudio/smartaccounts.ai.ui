@@ -2,13 +2,15 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { X, Menu, ChevronRight } from "lucide-react";
+import { X, Menu, ChevronRight, Sun, Moon } from "lucide-react";
 import LoginModal from "./LoginModal";
+import { useTheme } from "@/hooks/use-theme";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   // Handle scroll effect for the header
   useEffect(() => {
@@ -16,15 +18,27 @@ const Header = () => {
       setIsScrolled(window.scrollY > 10);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    
+    // Listen for custom event to open login modal
+    const handleOpenLoginModal = () => setIsLoginModalOpen(true);
+    window.addEventListener("openLoginModal", handleOpenLoginModal);
+    
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("openLoginModal", handleOpenLoginModal);
+    };
   }, []);
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
   return (
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "py-3 bg-white/90 backdrop-blur-md shadow-sm"
+            ? "py-3 bg-background/90 backdrop-blur-md shadow-sm"
             : "py-5 bg-transparent"
         }`}
       >
@@ -50,13 +64,24 @@ const Header = () => {
             <a href="#pricing" className="text-foreground/80 hover:text-smart-blue transition-colors">
               Pricing
             </a>
+            <a href="#comparison" className="text-foreground/80 hover:text-smart-blue transition-colors">
+              Compare
+            </a>
             <a href="#faq" className="text-foreground/80 hover:text-smart-blue transition-colors">
               FAQ
             </a>
           </nav>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons and Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              onClick={toggleTheme}
+              className="hover:bg-transparent p-2"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            </Button>
             <Button
               variant="ghost"
               onClick={() => setIsLoginModalOpen(true)}
@@ -72,13 +97,23 @@ const Header = () => {
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-foreground p-2"
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu size={24} />
-          </button>
+          {/* Mobile Menu Button and Theme Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <Button
+              variant="ghost"
+              onClick={toggleTheme}
+              className="hover:bg-transparent p-2"
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
+            </Button>
+            <button
+              className="text-foreground p-2"
+              onClick={() => setIsMobileMenuOpen(true)}
+            >
+              <Menu size={24} />
+            </button>
+          </div>
         </div>
       </header>
 
@@ -132,6 +167,14 @@ const Header = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 <span>Pricing</span>
+                <ChevronRight size={20} className="text-smart-blue" />
+              </a>
+              <a
+                href="#comparison"
+                className="flex items-center justify-between py-2 border-b border-border"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span>Compare</span>
                 <ChevronRight size={20} className="text-smart-blue" />
               </a>
               <a

@@ -5,6 +5,15 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const CTA = () => {
+  const handleStartTrial = () => {
+    const event = new CustomEvent("openLoginModal");
+    window.dispatchEvent(event);
+  };
+
+  const handleScheduleDemo = () => {
+    window.open("https://calendly.com/smartaccountsai/demo", "_blank");
+  };
+
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Background elements */}
@@ -40,6 +49,7 @@ const CTA = () => {
             <Button 
               size="lg" 
               className="bg-smart-blue hover:bg-smart-blue/90 hover-lift button-pulse"
+              onClick={handleStartTrial}
             >
               Start Your Free Trial <ArrowRight size={16} className="ml-2" />
             </Button>
@@ -47,6 +57,7 @@ const CTA = () => {
               size="lg" 
               variant="outline"
               className="hover-lift"
+              onClick={handleScheduleDemo}
             >
               Schedule a Demo
             </Button>

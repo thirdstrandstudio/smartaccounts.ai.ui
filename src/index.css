@@ -33,7 +33,37 @@
     --input: 214 32% 91%;
     --ring: 222 84% 5%;
 
-    --radius: 0.5rem;
+    --radius: 0.35rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 79% 46%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 195 82% 54%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 262 61% 67%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 212.7 26.8% 83.9%;
   }
 
   * {
@@ -44,11 +74,12 @@
     @apply bg-background text-foreground antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   /* Custom typography with bolder fonts */
   h1 {
-    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight uppercase font-heading;
+    @apply text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight uppercase font-heading;
   }
 
   h2, h3, h4, h5, h6 {
@@ -81,7 +112,7 @@
   }
 
   .glass-card {
-    @apply bg-white/90 border-2 border-border rounded-lg shadow-lg transition-all duration-300;
+    @apply bg-background border-2 border-border rounded-lg shadow-lg transition-all duration-300;
   }
 
   /* Animations */
@@ -121,5 +152,80 @@
   }
 
   /* Add font imports */
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Raleway:wght@700;800;900&display=swap');
+}
+
+/* Define smart colors */
+:root {
+  --smart-blue: 210 79% 46%;
+  --smart-teal: 178 76% 47%;
+  --smart-mint: 160 84% 39%;
+  --smart-purple: 262 61% 67%;
+  --smart-gray: 220 14% 96%;
+}
+
+/* Adding dark mode overrides for smart colors */
+.dark {
+  --smart-gray: 220 14% 16%;
+}
+
+@layer utilities {
+  .text-smart-blue {
+    color: hsl(var(--smart-blue));
+  }
+  
+  .bg-smart-blue {
+    background-color: hsl(var(--smart-blue));
+  }
+  
+  .text-smart-teal {
+    color: hsl(var(--smart-teal));
+  }
+  
+  .bg-smart-teal {
+    background-color: hsl(var(--smart-teal));
+  }
+  
+  .text-smart-mint {
+    color: hsl(var(--smart-mint));
+  }
+  
+  .bg-smart-mint {
+    background-color: hsl(var(--smart-mint));
+  }
+  
+  .text-smart-purple {
+    color: hsl(var(--smart-purple));
+  }
+  
+  .bg-smart-purple {
+    background-color: hsl(var(--smart-purple));
+  }
+  
+  .bg-smart-gray {
+    background-color: hsl(var(--smart-gray));
+  }
+}
+
+/* Font family assignments */
+@layer utilities {
+  .font-heading {
+    font-family: 'Raleway', sans-serif;
+  }
+  
+  body {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
+/* Extra bold elements */
+@layer utilities {
+  .text-stroke {
+    -webkit-text-stroke: 1px currentColor;
+  }
+  
+  .font-massive {
+    font-size: clamp(3rem, 10vw, 8rem);
+    line-height: 0.9;
+  }
 }

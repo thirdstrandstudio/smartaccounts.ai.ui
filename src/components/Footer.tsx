@@ -11,9 +11,9 @@ const Footer = () => {
   
   return (
     <>
-      <footer className="bg-white border-t border-border">
+      <footer className="bg-background border-t border-border">
         <div className="container mx-auto px-4 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Company Info */}
             <div>
               <div className="flex items-center space-x-2 mb-6">
@@ -28,16 +28,16 @@ const Footer = () => {
                 Transforming business finance with AI-powered accounting, banking, invoicing, and billing solutions.
               </p>
               <div className="flex space-x-4">
-                <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-smart-blue transition-colors">
                   <Facebook size={20} />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
+                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-smart-blue transition-colors">
                   <Twitter size={20} />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-smart-blue transition-colors">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-smart-blue transition-colors">
                   <Instagram size={20} />
                 </a>
               </div>
@@ -58,40 +58,13 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
-                    Integrations
+                  <a href="#how-it-works" className="text-muted-foreground hover:text-smart-blue transition-colors">
+                    How It Works
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
-                    Updates
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Company */}
-            <div>
-              <h5 className="font-semibold mb-5">Company</h5>
-              <ul className="space-y-3">
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-muted-foreground hover:text-smart-blue transition-colors">
-                    Contact
+                  <a href="#comparison" className="text-muted-foreground hover:text-smart-blue transition-colors">
+                    Comparison
                   </a>
                 </li>
               </ul>

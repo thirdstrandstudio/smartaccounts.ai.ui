@@ -8,8 +8,8 @@ import { Check, ArrowRight } from "lucide-react";
 const plans = [
   {
     name: "Starter",
-    monthlyPrice: 29,
-    yearlyPrice: 290,
+    monthlyPrice: 10,
+    yearlyPrice: 96,
     description: "Perfect for solopreneurs and freelancers",
     features: [
       "Connect up to 3 accounts",
@@ -20,12 +20,15 @@ const plans = [
     ],
     recommended: false,
     cta: "Start Free Trial",
-    ctaAction: () => console.log("Starter plan selected"),
+    ctaAction: () => {
+      const event = new CustomEvent("openLoginModal");
+      window.dispatchEvent(event);
+    },
   },
   {
     name: "Business",
-    monthlyPrice: 79,
-    yearlyPrice: 790,
+    monthlyPrice: 20,
+    yearlyPrice: 192,
     description: "Ideal for small businesses and growing teams",
     features: [
       "Connect up to 10 accounts",
@@ -37,12 +40,15 @@ const plans = [
     ],
     recommended: true,
     cta: "Start Free Trial",
-    ctaAction: () => console.log("Business plan selected"),
+    ctaAction: () => {
+      const event = new CustomEvent("openLoginModal");
+      window.dispatchEvent(event);
+    },
   },
   {
     name: "Enterprise",
-    monthlyPrice: 199,
-    yearlyPrice: 1990,
+    monthlyPrice: 50,
+    yearlyPrice: 480,
     description: "For established businesses with complex needs",
     features: [
       "Unlimited account connections",
@@ -55,7 +61,10 @@ const plans = [
     ],
     recommended: false,
     cta: "Contact Sales",
-    ctaAction: () => console.log("Enterprise plan selected"),
+    ctaAction: () => {
+      const event = new CustomEvent("openContactModal");
+      window.dispatchEvent(event);
+    },
   },
 ];
 
@@ -63,7 +72,7 @@ const Pricing = () => {
   const [isYearly, setIsYearly] = useState(true);
 
   return (
-    <section id="pricing" className="section-padding bg-gradient-to-b from-white to-smart-gray/30">
+    <section id="pricing" className="section-padding bg-gradient-to-b from-background to-smart-gray/30">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -114,6 +123,7 @@ const Pricing = () => {
                   ? "ring-4 ring-smart-blue before:absolute before:top-0 before:right-0 before:left-0 before:h-2 before:bg-smart-blue" 
                   : ""
               }`}
+              style={{ minHeight: "660px" }} // Fixed height for all pricing cards
             >
               {plan.recommended && (
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-smart-blue text-white text-sm font-bold px-4 py-2 rounded-md">
@@ -128,20 +138,21 @@ const Pricing = () => {
                 </p>
                 <div className="flex items-baseline">
                   <span className="text-5xl font-bold">
-                    ${isYearly ? plan.yearlyPrice / 12 : plan.monthlyPrice}
+                    ${isYearly ? Math.round(plan.yearlyPrice / 12) : plan.monthlyPrice}
                   </span>
                   <span className="text-muted-foreground ml-2 text-xl">
                     /month
                   </span>
                 </div>
                 {isYearly && (
-                  <div className="text-base text-muted-foreground mt-2">
+                  <div className="text-base text-muted-foreground mt-2 h-6">
                     Billed annually (${plan.yearlyPrice}/year)
                   </div>
                 )}
+                {!isYearly && <div className="h-6"></div>} {/* Empty spacer for consistency */}
               </div>
 
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-10 flex-grow">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start">
                     <Check size={24} className="text-smart-mint mr-3 mt-0.5 flex-shrink-0" />
