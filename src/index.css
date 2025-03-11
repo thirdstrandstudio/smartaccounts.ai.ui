@@ -33,7 +33,7 @@
     --input: 214 32% 91%;
     --ring: 222 84% 5%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
   }
 
   * {
@@ -46,42 +46,42 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Custom typography */
+  /* Custom typography with bolder fonts */
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight uppercase;
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight uppercase font-heading;
   }
 
   h2, h3, h4, h5, h6 {
-    @apply capitalize font-bold tracking-wide;
+    @apply capitalize font-bold tracking-tight font-heading;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl;
+    @apply text-4xl md:text-5xl;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl;
+    @apply text-3xl md:text-4xl;
   }
 
   h4 {
-    @apply text-xl md:text-2xl;
+    @apply text-2xl md:text-3xl;
   }
 
   h5 {
-    @apply text-lg md:text-xl;
+    @apply text-xl md:text-2xl;
   }
 
   h6 {
-    @apply text-base md:text-lg;
+    @apply text-lg md:text-xl;
   }
 
   /* Custom utility classes */
   .section-padding {
-    @apply py-16 md:py-24;
+    @apply py-20 md:py-28;
   }
 
   .glass-card {
-    @apply backdrop-blur-sm bg-white/90 border border-border rounded-xl shadow-sm transition-all duration-300;
+    @apply bg-white/90 border-2 border-border rounded-lg shadow-lg transition-all duration-300;
   }
 
   /* Animations */
@@ -96,13 +96,13 @@
     transform: translateY(0);
   }
 
-  /* Micro-interactions */
+  /* Micro-interactions with bolder effects */
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
   }
   
   .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-md;
+    @apply transition-all duration-300 hover:-translate-y-2 hover:shadow-xl;
   }
   
   .button-pulse {
@@ -111,7 +111,7 @@
   
   .button-pulse::after {
     content: '';
-    @apply absolute inset-0 rounded-lg bg-white/30 scale-0 transition-transform duration-700;
+    @apply absolute inset-0 rounded-md bg-white/30 scale-0 transition-transform duration-700;
   }
   
   .button-pulse:hover::after {
@@ -119,4 +119,7 @@
     transform-origin: center;
     transition: transform 0.7s ease-out, opacity 0.7s ease-out;
   }
+
+  /* Add font imports */
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Raleway:wght@700;800;900&display=swap');
 }

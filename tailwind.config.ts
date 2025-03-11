@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -57,23 +56,23 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors for our design
+        // Custom colors for our design - UPDATED with bolder colors
         smart: {
-          blue: "#4A89DC",
-          teal: "#3BAFDA",
-          mint: "#48CFAD",
-          purple: "#967ADC",
-          pink: "#D770AD",
-          yellow: "#F6BB42",
-          orange: "#E9573F",
-          gray: "#E6E9ED",
-          dark: "#2F3640",
+          blue: "#1E88E5", // Bolder blue
+          teal: "#00BCD4", // Bolder teal
+          mint: "#00C853", // Bolder mint
+          purple: "#8E24AA", // Bolder purple
+          pink: "#EC407A", // Bolder pink
+          yellow: "#FFC107", // Bolder yellow
+          orange: "#FF5722", // Bolder orange
+          gray: "#E0E0E0", // Lighter gray
+          dark: "#263238", // Darker charcoal
         },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "0.5rem", // Reduced from var(--radius)
+        md: "0.375rem", // Reduced rounding
+        sm: "0.25rem", // Reduced rounding
       },
       keyframes: {
         "accordion-down": {
@@ -118,6 +117,10 @@ export default {
         "slide-in-right": "slide-in-right 0.3s ease-out",
         "slide-out-right": "slide-out-right 0.3s ease-out",
         pulse: "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+      },
+      fontFamily: {
+        sans: ['"Montserrat"', 'sans-serif'],
+        heading: ['"Raleway"', 'sans-serif'],
       },
     },
   },
