@@ -1,4 +1,3 @@
-
 import React from "react";
 import { motion } from "framer-motion";
 import { 
@@ -9,12 +8,12 @@ import {
   Clock, 
   TrendingUp, 
   Wallet, 
-  Bank
+  Banknote
 } from "lucide-react";
 
 const features = [
   {
-    icon: <Bank size={40} />,
+    icon: <Banknote size={40} />,
     title: "Integrated Banking",
     description: "Connect your business bank accounts for real-time transaction tracking and categorization."
   },
