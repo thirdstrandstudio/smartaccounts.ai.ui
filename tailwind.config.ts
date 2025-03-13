@@ -56,18 +56,17 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Custom colors for our design - UPDATED with dark mode green focus
+        // Custom colors for our design - UPDATED with bolder colors
         smart: {
-          blue: "#1E88E5", // Bolder blue for light mode
-          teal: "#00BCD4", // Bolder teal for light mode
-          mint: "#00C853", // Bolder mint/green for light mode
-          purple: "#8E24AA", // Bolder purple for light mode
+          blue: "#1E88E5", // Bolder blue
+          teal: "#00BCD4", // Bolder teal
+          mint: "#00C853", // Bolder mint
+          purple: "#8E24AA", // Bolder purple
           pink: "#EC407A", // Bolder pink
           yellow: "#FFC107", // Bolder yellow
           orange: "#FF5722", // Bolder orange
           gray: "#E0E0E0", // Lighter gray
           dark: "#263238", // Darker charcoal
-          // Dark mode will use CSS variables defined in index.css
         },
       },
       borderRadius: {
