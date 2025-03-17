@@ -1,0 +1,57 @@
+name: Build and Commit Build Output
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  build-and-commit:
+    # Run only if not a PR event or the PR was merged.
+    if: github.event.pull_request == null || github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          # Ensure full history so git can properly commit and push changes.
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Copy build output from dist to docs
+        run: |
+          rm -Rf docs/*
+          rm -Rf docs/.*
+          rm -Rf docs
+          mkdir -p docs
+          cp -r dist/. docs/
+          touch docs/CNAME
+          echo "smartaccounts.ai" >> docs/CNAME
+          ls -la docs
+
+      - name: Commit docs output if changed
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          git add docs
+          if git diff-index --quiet HEAD --; then
+            echo "No changes to commit."
+          else
+            git commit -m "Update docs output [skip ci]"
+            git push https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:${{ github.ref }}
+          fi
