@@ -29,10 +29,6 @@ const Header = () => {
     };
   }, []);
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
-  };
-
   return (
     <>
       <header
@@ -74,14 +70,7 @@ const Header = () => {
 
           {/* CTA Buttons and Theme Toggle */}
           <div className="hidden md:flex items-center space-x-4">
-            <Button
-              variant="ghost"
-              onClick={toggleTheme}
-              className="hover:bg-transparent p-2"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
+
             <Button
               variant="ghost"
               onClick={() => setIsLoginModalOpen(true)}
