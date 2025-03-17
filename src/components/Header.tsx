@@ -88,14 +88,6 @@ const Header = () => {
 
           {/* Mobile Menu Button and Theme Toggle */}
           <div className="md:hidden flex items-center space-x-2">
-            <Button
-              variant="ghost"
-              onClick={toggleTheme}
-              className="hover:bg-transparent p-2"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
-            </Button>
             <button
               className="text-foreground p-2"
               onClick={() => setIsMobileMenuOpen(true)}
